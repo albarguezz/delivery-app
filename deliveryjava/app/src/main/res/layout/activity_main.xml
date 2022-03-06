@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <View
+        android:id="@+id/viewHeaderBackground"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_125sdp"
+        android:background="@color/primary"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:text="@string/pedidos"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <!-- revisar tarjeta margen con el top -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_119sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        app:cardBackgroundColor="@color/card_background"
+        app:cardCornerRadius="@dimen/_16sdp"
+        app:layout_constraintBottom_toBottomOf="@id/viewHeaderBackground"
+        app:layout_constraintTop_toTopOf="@id/viewHeaderBackground">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_14sdp">
+
+            <TextView
+                android:id="@+id/textViews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/resumen"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/_14ssp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/layoutPedidos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/layoutImpacted"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textViews" >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:src="@drawable/entrega_rapida" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="@string/pendientes"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <TextView
+                    android:id="@+id/pedidosPendientesNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="0"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/_16ssp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutImpacted"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@+id/layoutFollowing"
+                app:layout_constraintStart_toEndOf="@id/layoutPedidos"
+                app:layout_constraintTop_toBottomOf="@id/textViews" >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:src="@drawable/paquete" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="@string/realizados"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <TextView
+                    android:id="@+id/pedidosCompletadosNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="0"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/_16ssp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutFollowing"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/layoutImpacted"
+                app:layout_constraintTop_toBottomOf="@id/textViews" >
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_28sdp"
+                    android:layout_height="@dimen/_28sdp"
+                    android:src="@drawable/caja" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="@string/totales"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/_10ssp"/>
+
+                <TextView
+                    android:id="@+id/totalPedidosNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:text="0"
+                    android:textColor="@color/primary_text"
+                    android:textSize="@dimen/_16ssp"/>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleView"
+        android:layout_width="352dp"
+        android:layout_height="522dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:clickable="true"
+        app:layout_constraintVertical_bias="1.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">delivery-java</string>
+    <string name="resumen">Resumen</string>
+    <string name="pedidos">Pedidos</string>
+    <string name="realizados">Realizados</string>
+    <string name="sin_realizar">Sin realizar</string>
+    <string name="totales">Totales</string>
+    <string name="ruta">Ruta</string>
+    <string name="completado">Completado</string>
+    <string name="pedido">Pedido</string>
+    <string name="nombre">Nombre:</string>
+    <string name="total_a_pagar">Total a pagar:</string>
+    <string name="direccion">Direccion:</string>
+    <string name="back">back</string>
+    <string name="estado">Estado:</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="delivery_app">DeliveryApp</string>
+    <string name="pendientes">Pendientes</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="usuarioicon">usuarioIcon</string>
+    <string name="passwordicon">passwordIcon</string>
+    <string name="or">OR</string>
+    <string name="logo">logo</string>
+</resources>
