@@ -49,12 +49,8 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         binding.btnComplete.setOnClickListener(v -> {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.1.38:8000/")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-            pedidoAPI = retrofit.create(PedidoAPI.class);
-            updatePedido(pedidoSelecionado);
+
+            updatePedido(pedidoSelecionado.getId(), "completado");
         });
 
         binding.btnBack.setOnClickListener(v -> {
@@ -65,21 +61,25 @@ public class DetailActivity extends AppCompatActivity {
 
     /**
      * Funcion que llama a la api y reliza un post para actualizar el estado del pedido
-     * @param pedido_actualizar @Pedido pedido que queremos actualizar
+     * @param estado @String estado del pedido que queremos actualizar
+     * @param id @LatLng id del pedido a actualizar
      */
-    private void updatePedido(Pedido pedido_actualizar) {
-
-        pedido_actualizar.setEstado("Completado");
-
-        Call<Pedido> call = pedidoAPI.updatePedido(String.valueOf(pedido_actualizar.getId()),pedido_actualizar);
+    private void updatePedido(Long id, String estado) {
+        Retrofit retrofitPedido = new Retrofit.Builder()
+                .baseUrl("http://192.168.1.38:8000/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        PedidoAPI pedidoAPI = retrofitPedido.create(PedidoAPI.class);
+        Call<Pedido> call = pedidoAPI.updatePedido(String.valueOf(id), estado);
         call.enqueue(new Callback<Pedido>() {
             @Override
             public void onResponse(@NonNull Call<Pedido> call, @NonNull Response<Pedido> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(DetailActivity.this, "Error, no se ha podido actualizar el estado", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(DetailActivity.this, "Pedido completado!", Toast.LENGTH_SHORT).show();
-                    System.out.println(response.body());
+                try {
+                    if (!response.isSuccessful()) {
+                        Toast.makeText(DetailActivity.this,"Pedido completado!", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(DetailActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -36,14 +36,14 @@ public class RegisterActivity extends AppCompatActivity {
             if(!TextUtils.isEmpty(binding.nameEdit.getText()) && !TextUtils.isEmpty(binding.usernameEdit.getText()) && !TextUtils.isEmpty(binding.passEdit.getText())) {
                 Usuario userNew = new Usuario();
                 userNew.setNombre(binding.nameEdit.getText().toString());
-                userNew.setPassword(binding.usernameEdit.getText().toString());
+                userNew.setEmail(binding.usernameEdit.getText().toString());
                 userNew.setPassword(binding.passEdit.getText().toString().trim());
                 userNew.setRol("repartidor");
                 addUsuarios(userNew);
             } else {
                 Toast.makeText(RegisterActivity.this, "Por favor, rellene todos los campos", Toast.LENGTH_SHORT).show();
             }
-            Intent intent = new Intent(this, DetailActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         });
 
@@ -57,17 +57,17 @@ public class RegisterActivity extends AppCompatActivity {
      * Funcion que hace llamada de post para registrar un nuevo usuario
      */
     public void addUsuarios(Usuario new_user) {
-        Retrofit retrofit2 = new Retrofit.Builder().baseUrl("http://127.0.0.1:8000/")
+        Retrofit retrofitUsers = new Retrofit.Builder().baseUrl("http://192.168.1.38:8000/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
-        UsuarioAPI usuarioApi2 = retrofit2.create(UsuarioAPI.class);
-        Call<List<Usuario>> call2 = usuarioApi2.findUsuarios();
-        call2.enqueue(new Callback<List<Usuario>>() {
+        UsuarioAPI usuarioApi = retrofitUsers.create(UsuarioAPI.class);
+        Call<Usuario> call = usuarioApi.addUsuario(new_user);
+        call.enqueue(new Callback<Usuario>() {
             @Override
-            public void onResponse(@NonNull Call<List<Usuario>> call, @NonNull Response<List<Usuario>> response) {
+            public void onResponse(@NonNull Call<Usuario> call, @NonNull Response<Usuario> response) {
                 try {
                     if (response.isSuccessful()) {
-                        List<Usuario> p = response.body();
-                        assert p != null;
+                        Toast.makeText(RegisterActivity.this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+
                     }
                 } catch (Exception ex) {
                     Toast.makeText(RegisterActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
@@ -75,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Usuario>> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
                 Toast.makeText(RegisterActivity.this, "Error de conexion", Toast.LENGTH_SHORT).show();
             }
         });

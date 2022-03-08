@@ -62,20 +62,67 @@
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="286dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="60dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="52dp"
         android:text="@string/login"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintBottom_toTopOf="@+id/btnRegister"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewOR"
+        android:layout_width="28dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/or"
+        android:textSize="@dimen/_14ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
+
+    <View
+        android:layout_width="109dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="78dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="24dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/primary_text"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.388"
+        app:layout_constraintStart_toEndOf="@+id/textViewOR"
+        app:layout_constraintTop_toTopOf="@+id/btnLogin"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:layout_width="109dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginBottom="25dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/primary_text"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
+        app:layout_constraintEnd_toStartOf="@+id/textViewOR"
+        app:layout_constraintHorizontal_bias="0.275"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="286dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="68dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="84dp"
         android:text="@string/register"
         android:textSize="@dimen/_14ssp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -145,52 +192,6 @@
         app:layout_constraintTop_toTopOf="@+id/passEdit"
         app:layout_constraintVertical_bias="0.0"
         app:tint="@color/primary" />
-
-    <View
-        android:layout_width="109dp"
-        android:layout_height="5dp"
-        android:layout_marginTop="78dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginBottom="24dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-        android:backgroundTint="@color/primary_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toEndOf="@+id/textViewOR"
-        app:layout_constraintTop_toTopOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="0.833" />
-
-    <View
-        android:layout_width="109dp"
-        android:layout_height="5dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="21dp"
-        android:layout_marginBottom="25dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-        app:layout_constraintEnd_toStartOf="@+id/textViewOR"
-        android:backgroundTint="@color/primary_text"
-        app:layout_constraintHorizontal_bias="0.411"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textViewOR"
-        android:layout_width="28dp"
-        android:layout_height="26dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginBottom="12dp"
-        android:text="@string/or"
-        android:textSize="@dimen/_14ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegister"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-        app:layout_constraintVertical_bias="1.0"
-        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
