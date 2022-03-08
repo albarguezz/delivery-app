@@ -46,6 +46,9 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Funcion que hace la llamada a la api devuelve todos los usuarios y comprueba si tiene autorizacion y si existe el usuario
+     */
     public void findUsuarios() {
         Retrofit retrofit2 = new Retrofit.Builder().baseUrl("http://192.168.1.38:8000/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
@@ -58,19 +61,20 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         List<Usuario> us = response.body();
                         assert us != null;
-                        String email = binding.passEdit.getText().toString();
+                        String email = binding.usernameEdit.getText().toString();
                         String pass = binding.passEdit.getText().toString();
+                        boolean existe = false;
                         for (Usuario user: us) {
                             if (user.getPassword().equals(pass) &&
                                     user.getEmail().equals(email) &&
                                     user.getRol().equals("repartidor")) {
-
+                                    existe = true;
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
-                            } else {
-                                Toast.makeText(LoginActivity.this, "No existe usuario con esos datos!", Toast.LENGTH_SHORT).show();
                             }
-
+                        }
+                        if (!existe) {
+                            Toast.makeText(LoginActivity.this, "No existe usuario con esos datos!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 } catch (Exception ex) {

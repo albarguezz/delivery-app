@@ -11,11 +11,11 @@ import retrofit2.http.Path;
 
 public interface UsuarioAPI {
     @GET("api/usuarios/")
-    public Call<List<Usuario>> findUsuarios();
+    Call<List<Usuario>> findUsuarios();
 
     @GET("api/usuarios/{id}")
-    public Call<Usuario> findUsuarioById(@Path("id") String id);
+    Call<Usuario> findUsuarioById(@Path("id") String id);
 
     @POST("api/usuarios/")
-    public Call<Usuario> addUsuario();
+    Call<Usuario> addUsuario();
 }

@@ -2,6 +2,7 @@ package com.example.delivery_java;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -32,6 +33,16 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(view);
 
         binding.btnRegister.setOnClickListener(v -> {
+            if(!TextUtils.isEmpty(binding.nameEdit.getText()) && !TextUtils.isEmpty(binding.usernameEdit.getText()) && !TextUtils.isEmpty(binding.passEdit.getText())) {
+                Usuario userNew = new Usuario();
+                userNew.setNombre(binding.nameEdit.getText().toString());
+                userNew.setPassword(binding.usernameEdit.getText().toString());
+                userNew.setPassword(binding.passEdit.getText().toString().trim());
+                userNew.setRol("repartidor");
+                addUsuarios(userNew);
+            } else {
+                Toast.makeText(RegisterActivity.this, "Por favor, rellene todos los campos", Toast.LENGTH_SHORT).show();
+            }
             Intent intent = new Intent(this, DetailActivity.class);
             startActivity(intent);
         });
@@ -41,7 +52,11 @@ public class RegisterActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-    public void addUsuarios() {
+
+    /**
+     * Funcion que hace llamada de post para registrar un nuevo usuario
+     */
+    public void addUsuarios(Usuario new_user) {
         Retrofit retrofit2 = new Retrofit.Builder().baseUrl("http://127.0.0.1:8000/")
                 .addConverterFactory(GsonConverterFactory.create()).build();
         UsuarioAPI usuarioApi2 = retrofit2.create(UsuarioAPI.class);

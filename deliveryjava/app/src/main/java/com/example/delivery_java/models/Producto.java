@@ -1,8 +1,9 @@
 package com.example.delivery_java.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Producto {
+public class Producto implements Serializable {
 
     private Long id;
 

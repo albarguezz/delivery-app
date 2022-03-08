@@ -24,4 +24,7 @@
     <string name="passwordicon">passwordIcon</string>
     <string name="or">OR</string>
     <string name="logo">logo</string>
+    <string name="informacion_detalle">Detalles del pedido</string>
+    <string name="title_location_permission">Allow permission</string>
+    <string name="ok">ok</string>
 </resources>

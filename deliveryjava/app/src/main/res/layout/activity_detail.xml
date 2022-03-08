@@ -4,22 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".DetailActivity">
 
-
-    <TextView
-        android:id="@+id/name2"
-        android:layout_width="180dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="60dp"
-        android:text=""
-        android:textSize="@dimen/_15ssp"
-        app:layout_constraintBottom_toTopOf="@+id/priceTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.658"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHeaderBackground"
-        app:layout_constraintVertical_bias="0.0" />
 
     <View
         android:id="@+id/viewHeaderBackground"
@@ -61,6 +48,103 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textDetalle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/informacion_detalle"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/_20ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.221"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewHeaderBackground" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="188dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="23dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toTopOf="@+id/estado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toEndOf="@+id/priceTitle" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="180dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="60dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toTopOf="@+id/price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.28"
+        app:layout_constraintStart_toEndOf="@+id/nameTitle"
+        app:layout_constraintTop_toBottomOf="@+id/viewHeaderBackground"
+        app:layout_constraintVertical_bias="0.636" />
+
+    <TextView
+        android:id="@+id/directionTitle2"
+        android:layout_width="100dp"
+        android:layout_height="34dp"
+        android:layout_marginBottom="164dp"
+        android:text="@string/direccion"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnRute"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/direction"
+        android:layout_width="208dp"
+        android:layout_height="105dp"
+        android:layout_marginBottom="92dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintBottom_toTopOf="@+id/btnComplete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.241"
+        app:layout_constraintStart_toEndOf="@+id/directionTitle2" />
+
+    <TextView
+        android:id="@+id/estadoTitle"
+        android:layout_width="75dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/estado"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/directionTitle2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/priceTitle"
+        android:layout_width="130dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/total_a_pagar"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/_15ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/estadoTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.149"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/nameTitle"
         android:layout_width="85dp"
         android:layout_height="32dp"
@@ -71,92 +155,24 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/priceTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintHorizontal_bias="0.128"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewHeaderBackground"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/priceTitle"
-        android:layout_width="130dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="112dp"
-        android:text="@string/total_a_pagar"
-        android:textColor="@color/primary"
-        android:textSize="@dimen/_15ssp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.16"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHeaderBackground" />
-
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="188dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="112dp"
-        android:text=""
-        android:textSize="@dimen/_15ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.883"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewHeaderBackground" />
-
-    <TextView
-        android:id="@+id/directionTitle2"
-        android:layout_width="100dp"
-        android:layout_height="34dp"
-        android:layout_marginBottom="436dp"
-        android:text="@string/direccion"
-        android:textColor="@color/primary"
-        android:textSize="@dimen/_15ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priceTitle"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/direction"
-        android:layout_width="200dp"
-        android:layout_height="34dp"
-        android:layout_marginBottom="436dp"
-        android:text=""
-        android:textSize="@dimen/_15ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.791"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/price"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/estadoTitle"
-        android:layout_width="75dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="376dp"
-        android:text="@string/estado"
-        android:textColor="@color/primary"
-        android:textSize="@dimen/_15ssp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintVertical_bias="0.641" />
 
     <TextView
         android:id="@+id/estado"
-        android:layout_width="180dp"
-        android:layout_height="35dp"
-        android:layout_marginBottom="376dp"
+        android:layout_width="200dp"
+        android:layout_height="34dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="23dp"
         android:text=""
+        android:textColor="@color/white"
         android:textSize="@dimen/_15ssp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/direction"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.627"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.657"
+        app:layout_constraintStart_toEndOf="@+id/estadoTitle" />
 
     <Button
         android:id="@+id/btnRute"
@@ -165,6 +181,7 @@
         android:layout_marginBottom="132dp"
         android:drawableLeft="@drawable/ic_location"
         android:drawableTint="@color/white"
+        android:textColor="@color/white"
         android:text="@string/ruta"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -179,6 +196,7 @@
         android:layout_marginEnd="44dp"
         android:layout_marginBottom="132dp"
         android:text="@string/completado"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

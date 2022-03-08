@@ -1,6 +1,7 @@
 package com.example.delivery_java.controllers;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,12 @@ import com.example.delivery_java.models.Pedido;
 import java.util.ArrayList;
 import android.widget.TextView;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolderDatos> {
+public class CustomAdapter
+        extends RecyclerView.Adapter<CustomAdapter.ViewHolderDatos>
+        implements View.OnClickListener {
 
     ArrayList<Pedido> listDatos;
+    private View.OnClickListener listener;
 
     public CustomAdapter(ArrayList<Pedido> listDatos) {
         this.listDatos = listDatos;
@@ -27,6 +31,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public ViewHolderDatos onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         @SuppressLint("InflateParams") View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_view, null, false);
+        view.setOnClickListener(this);
         return new ViewHolderDatos(view);
     }
 
@@ -38,6 +43,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return listDatos.size();
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
+        this.listener=listener;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (listener!=null){
+            listener.onClick(view);
+        }
     }
 
     public static class ViewHolderDatos extends RecyclerView.ViewHolder {
@@ -58,5 +74,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             estado.setText(pedido.getEstado());
             direccion.setText(pedido.getUsuario().getDireccion());
         }
+
     }
 }

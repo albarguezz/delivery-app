@@ -8,8 +8,8 @@ import retrofit2.http.Path;
 
 public interface ProductoAPI {
     @GET("api/productos/")
-    public Call<List<Producto>> findProductos();
+    Call<List<Producto>> findProductos();
 
     @GET("api/productos/{id}")
-    public Call<Producto> findProductoById(@Path("id") String id);
+    Call<Producto> findProductoById(@Path("id") String id);
 }

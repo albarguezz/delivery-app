@@ -1,8 +1,9 @@
 package com.example.delivery_java.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Menu {
+public class Menu implements Serializable {
     private Long id;
     private String nombre;
     private float precio;

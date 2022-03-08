@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -52,11 +53,11 @@ public class MainActivity extends AppCompatActivity {
                         List<Pedido> pedidosPendientes = new ArrayList<>();
                         List<Pedido> pedidosRealizados = new ArrayList<>();
                         addRecyclerViewList(ps);
+
                         assert ps != null;
                         binding.totalPedidosNumber.setText(String.valueOf(ps.size()));
                         for (Pedido pedido: ps) {
                             String estado = pedido.getEstado();
-                            listDatos.add(pedido);
 
                             if (estado.equals("pendiente")) {
                                 pedidosPendientes.add(pedido);
@@ -84,21 +85,16 @@ public class MainActivity extends AppCompatActivity {
         recycler.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
         listDatos = listToArrayList(pedidosResponse);
 
-        /* for(int i = 0; i <= 10; i++){
-            Usuario user = new Usuario();
-            user.setNombre("Alba");
-            user.setEmail("alba@alba");
-            user.setDireccion("Rúa de Santa Marta");
-            user.setId(1L);
-            user.setRol("standard");
-            Pedido pedido = new Pedido();
-            pedido.setEstado("Pendiente");
-            pedido.setId(1L);
-            pedido.setUsuario(user);
-            listDatos.add(pedido);
-        }*/
-
         CustomAdapter adapter = new CustomAdapter(listDatos);
+
+        adapter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                intent.putExtra("pedido", listDatos.get(recycler.getChildAdapterPosition(view)));
+                startActivity(intent);
+            }
+        });
         recycler.setAdapter(adapter);
     }
 

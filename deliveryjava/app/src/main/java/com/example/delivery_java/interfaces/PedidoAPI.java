@@ -6,18 +6,19 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+
 import retrofit2.http.GET;
-import retrofit2.http.POST;
+import retrofit2.http.PATCH;
 import retrofit2.http.Path;
 
 public interface PedidoAPI {
 
+    @PATCH("api/pedidos/{id}")
+    Call<Pedido> updatePedido(@Path("id") String id, @Body Pedido pedido);
+
     @GET("api/pedidos/")
-    public Call<List<Pedido>> findPedidos();
+    Call<List<Pedido>> findPedidos();
 
     @GET("api/pedidos/{id}")
-    public Call<Pedido> findPedidoById(@Path("id") String id);
-
-    @POST("api/pedidos/{id}")
-    Call<Pedido> updatePedido(@Path("id") String id, @Body Pedido user);
+    Call<Pedido> findPedidoById(@Path("id") String id);
 }
