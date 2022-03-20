@@ -2,20 +2,15 @@ package com.example.delivery_java;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.delivery_java.databinding.ActivityDetailBinding;
 import com.example.delivery_java.databinding.ActivityLoginBinding;
-import com.example.delivery_java.interfaces.PedidoAPI;
 import com.example.delivery_java.interfaces.UsuarioAPI;
-import com.example.delivery_java.models.Pedido;
 import com.example.delivery_java.models.Usuario;
-import com.google.android.gms.maps.SupportMapFragment;
 
 import java.util.List;
 
@@ -37,7 +32,11 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(view);
 
         binding.btnLogin.setOnClickListener(v -> {
-            findUsuarios();
+            if (binding.usernameEdit.equals("") && binding.passEdit.equals("")) {
+                Toast.makeText(LoginActivity.this, "Por favor, rellene el formulario", Toast.LENGTH_SHORT).show();
+            } else {
+                findUsuarios();
+            }
         });
 
         binding.btnRegister.setOnClickListener(v -> {
@@ -69,8 +68,10 @@ public class LoginActivity extends AppCompatActivity {
                                     user.getEmail().equals(email) &&
                                     user.getRol().equals("repartidor")) {
                                     existe = true;
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    startActivity(intent);
+                                    if (existe){
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                    }
                             }
                         }
                         if (!existe) {

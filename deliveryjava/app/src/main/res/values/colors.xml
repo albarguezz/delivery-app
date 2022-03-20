@@ -11,5 +11,5 @@
     <color name="dashboard_item_3">#72A4FF</color>
     <color name="dashboard_item_4">#8B72FF</color>
     <color name="rute">#252C4B</color>
-    <color name="text_detail">#FFFFFF</color>
+    <color name="text_detail">#000000</color>
 </resources>

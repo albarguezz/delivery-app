@@ -22,7 +22,6 @@ public interface PedidoAPI {
     @GET("api/pedidos/{id}")
     Call<Pedido> findPedidoById(@Path("id") String id);
 
-    @FormUrlEncoded
-    @PATCH("api/pedidos/{id}")
-    Call<Pedido> updatePedido(@Path("id") String id, @Field("title") String title);
+    @PUT("api/pedidos/{id}")
+    Call<Pedido> updatePedido(@Path("id") String id,  @Body Pedido pedido);
 }

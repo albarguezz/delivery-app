@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.delivery_java.databinding.ActivityDetailBinding;
 import com.example.delivery_java.interfaces.PedidoAPI;
-import com.example.delivery_java.interfaces.UsuarioAPI;
 import com.example.delivery_java.models.Pedido;
 
 import retrofit2.Call;
@@ -49,8 +48,8 @@ public class DetailActivity extends AppCompatActivity {
         });
 
         binding.btnComplete.setOnClickListener(v -> {
-
-            updatePedido(pedidoSelecionado.getId(), "completado");
+            pedidoSelecionado.setEstado("completado");
+            updatePedido(pedidoSelecionado.getId(), pedidoSelecionado);
         });
 
         binding.btnBack.setOnClickListener(v -> {
@@ -61,22 +60,25 @@ public class DetailActivity extends AppCompatActivity {
 
     /**
      * Funcion que llama a la api y reliza un post para actualizar el estado del pedido
-     * @param estado @String estado del pedido que queremos actualizar
      * @param id @LatLng id del pedido a actualizar
      */
-    private void updatePedido(Long id, String estado) {
+    private void updatePedido(Long id, Pedido pedido) {
         Retrofit retrofitPedido = new Retrofit.Builder()
-                .baseUrl("http://192.168.1.38:8000/")
+                .baseUrl("http://192.168.64.1:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         PedidoAPI pedidoAPI = retrofitPedido.create(PedidoAPI.class);
-        Call<Pedido> call = pedidoAPI.updatePedido(String.valueOf(id), estado);
+        Call<Pedido> call = pedidoAPI.updatePedido(String.valueOf(id), pedido);
         call.enqueue(new Callback<Pedido>() {
             @Override
             public void onResponse(@NonNull Call<Pedido> call, @NonNull Response<Pedido> response) {
                 try {
                     if (!response.isSuccessful()) {
                         Toast.makeText(DetailActivity.this,"Pedido completado!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(DetailActivity.this, "Lo sentimos algo ha fallado", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
                     Toast.makeText(DetailActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
